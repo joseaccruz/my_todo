@@ -1,0 +1,31 @@
+#
+# These tests must be run with option `-d 2024-06-01`
+#
+
+OK - 2024-04-30 - */ test task- DONE. 1 >2024-04-29 <2024-05-30 1m
+
+*/ test task - WAIT.
+    """
+    My comments
+    """
+    */ test task 2 - WAIT.
+
+*/ test task 11. 0 >2024-05-20 <2024-05-30 3d
+
+*/ test task 12. 0 >2024-05-20 <2024-06-05 3d
+
+*/ test task 13. 0 >2024-05-20 <2024-06-11 3d
+
+!/ test task 21. 0 >2024-05-20 <2024-05-30 3d
+
+!/ test task 22. 0 >2024-05-20 <2024-06-08 3d
+
+!/ test task 23. 0 >2024-05-20 <2024-06-12 3d
+
+^/ test task 3. 2 >2024-04-29 <2024-05-30 15m
+
+*/ task (rec in 2d). >2024-04-29
+
+*/ task.  >2024-04-29 +10d 1d
+
+

@@ -1,0 +1,4 @@
+*/ task1.
+    """
+    */ Task should not appear inside comments.
+    """

@@ -1,0 +1,111 @@
+No holidays available.
+-
+No holidays available.
+Syntax error detected in your TODO source:
+	'errors1':3:Invalid task
+No holidays available.
+Syntax error detected in your TODO source:
+	'errors2':3:Task found inside comments
+No holidays available.
+Logic error detected in your TODO source:
+	'errors3':5:Task can't start before their parents.
+No holidays available.
+Logic error detected in your TODO source:
+	'errors4':1:An effort must be specified every time a due date is specified.
+No holidays available.
+Logic error detected in your TODO source:
+	'errors5':5:A task can't be due (2024-05-30) after their parents due date (2024-04-30).
+No holidays available.
+Logic error detected in your TODO source:
+	'errors6':1:Hard deadline tasks require an explicit due date.
+No holidays available.
+Logic error detected in your TODO source:
+	'errors7':3:Waiting tasks needs at least one ready preceeding task.
+No holidays available.
+Logic error detected in your TODO source:
+	'errors8':5:Waiting tasks needs at least one ready preceeding task.
+No holidays available.
+Logic error detected in your TODO source:
+	'errors9':3:A task's due date (2024-04-15) can't come before start date (2024-04-25).
+No holidays available.
+Logic error detected in your TODO source:
+	'errors10':1:A recurrent task must have an explicit start date
+No holidays available.
+Logic error detected in your TODO source:
+	'errors11':2:A task with a relative due date must have an explicit start date
+No holidays available.
+Logic error detected in your TODO source:
+	'errors11':2:A task with a relative due date must have an explicit start date
+No holidays available.
+Logic error detected in your TODO source:
+	'errors12':3:Only leaf tasks can be pending other tasks.
+No holidays available.
+Logic error detected in your TODO source:
+	'test_empty1':1:No ready children found for ready parent.
+No holidays available.
+Logic error detected in your TODO source:
+	'ROOT':0:No tasks found.
+Invalid parameters calling `todo.py`:
+	Argument 'Date' must be either a date 'Y-m-d' or a relative offset in the format: +nd, +nw, +nm
+------------------------------------------------------------
+Task list path: 'ok'
+Current date:   '2024-06-01'
+------------------------------------------------------------
+
+>>>> 2024-05-20 -> ! 2024-05-30  3d / NOW !!    | test0 (19) > ↓ - test task 21
+>>>> 2024-05-20 -> ! 2024-05-30  3d / NOW !!    | test_simul (14) > ↓ - test task 21
+>>>> 2024-05-20 ->   2024-05-30  3d / OVERDUE ! | test0 (13) > ↓ - test task 11
+>>>> 2024-04-29 ->   2024-05-14  1d / OVERDUE ! | test0 (29) > ↓ - task
+>>>> 2024-05-20 ->   2024-05-30  3d / OVERDUE ! | test_simul (8) > ↓ - test task 11
+>>>> 2024-04-29 ->   2024-05-14  1d / OVERDUE ! | test_simul (24) > ↓ - task
+>>>> 2024-05-20 ->   2024-06-05  3d / CRITICAL  | test0 (15) > ↓ - test task 12
+>>>> 2024-05-20 -> ! 2024-06-08  3d / CRITICAL  | test0 (21) > ↓ - test task 22
+>>>> 2024-05-20 ->   2024-06-05  3d / CRITICAL  | test_simul (10) > ↓ - test task 12
+>>>> 2024-05-20 -> ! 2024-06-08  3d / CRITICAL  | test_simul (16) > ↓ - test task 22
+>>>>     --     ->       --         / ACTIVE    | test0 (11) > ↓ - test task 2 - WAIT < test task - WAIT
+>>>> 2024-05-20 ->   2024-06-11  3d / ACTIVE    | test0 (17) > ↓ - test task 13
+>>>> 2024-05-20 -> ! 2024-06-12  3d / ACTIVE    | test0 (23) > ↓ - test task 23
+>>>> 2024-04-29 ->       --         / ACTIVE    | test0 (27) > ↓ - task
+>>>>     --     ->       --         / ACTIVE    | test_simul (6) > ↓ - test task 2 - WAIT < test task - WAIT
+>>>> 2024-05-20 ->   2024-06-11  3d / ACTIVE    | test_simul (12) > ↓ - test task 13
+>>>> 2024-05-20 -> ! 2024-06-12  3d / ACTIVE    | test_simul (18) > ↓ - test task 23
+>>>> 2024-04-29 ->       --         / ACTIVE    | test_simul (22) > ↓ - task
+>>>>     --     ->       --         / NO_ACTION | test0 (7)  > ↓ - test task - WAIT
+>>>>     --     ->       --         / NO_ACTION | test_simul (5) > ↓ - test task - WAIT
+>>>> 2024-04-29 ->   2024-05-30 15m / WAITING   | test0 (25) > ↑ - test task 3
+>>>> 2024-04-29 ->   2024-05-30 15m / WAITING   | test_simul (20) > ↑ - test task 3
+ 
+	22 tasks found. 22 tasks shown.
+No holidays available.
+Task list is empty.
+No holidays for 2030 available.
+No holidays for 2031 available.
+------------------------------------------------------------
+Task list path: 'ok'
+Current date:   '2030-04-30'
+------------------------------------------------------------
+
+>>>> 2024-05-20 -> ! 2024-05-30  3d / NOW !!    | test0 (19) > ↓ - test task 21
+>>>> 2024-05-20 -> ! 2024-06-08  3d / NOW !!    | test0 (21) > ↓ - test task 22
+>>>> 2024-05-20 -> ! 2024-06-12  3d / NOW !!    | test0 (23) > ↓ - test task 23
+>>>> 2024-05-20 -> ! 2024-05-30  3d / NOW !!    | test_simul (14) > ↓ - test task 21
+>>>> 2024-05-20 -> ! 2024-06-08  3d / NOW !!    | test_simul (16) > ↓ - test task 22
+>>>> 2024-05-20 -> ! 2024-06-12  3d / NOW !!    | test_simul (18) > ↓ - test task 23
+>>>> 2024-05-20 ->   2024-05-30  3d / OVERDUE ! | test0 (13) > ↓ - test task 11
+>>>> 2024-05-20 ->   2024-06-05  3d / OVERDUE ! | test0 (15) > ↓ - test task 12
+>>>> 2024-05-20 ->   2024-06-11  3d / OVERDUE ! | test0 (17) > ↓ - test task 13
+>>>> 2024-04-29 ->   2024-05-14  1d / OVERDUE ! | test0 (29) > ↓ - task
+>>>> 2024-05-20 ->   2024-05-30  3d / OVERDUE ! | test_simul (8) > ↓ - test task 11
+>>>> 2024-05-20 ->   2024-06-05  3d / OVERDUE ! | test_simul (10) > ↓ - test task 12
+>>>> 2024-05-20 ->   2024-06-11  3d / OVERDUE ! | test_simul (12) > ↓ - test task 13
+>>>> 2024-04-29 ->   2024-05-14  1d / OVERDUE ! | test_simul (24) > ↓ - task
+>>>>     --     ->       --         / ACTIVE    | test0 (11) > ↓ - test task 2 - WAIT < test task - WAIT
+>>>> 2024-04-29 ->       --         / ACTIVE    | test0 (27) > ↓ - task
+>>>>     --     ->       --         / ACTIVE    | test_simul (6) > ↓ - test task 2 - WAIT < test task - WAIT
+>>>> 2024-04-29 ->       --         / ACTIVE    | test_simul (22) > ↓ - task
+>>>>     --     ->       --         / NO_ACTION | test0 (7)  > ↓ - test task - WAIT
+>>>>     --     ->       --         / NO_ACTION | test_simul (5) > ↓ - test task - WAIT
+>>>> 2024-04-29 ->   2024-05-30 15m / WAITING   | test0 (25) > ↑ - test task 3
+>>>> 2024-04-29 ->   2024-05-30 15m / WAITING   | test_simul (20) > ↑ - test task 3
+ 
+	22 tasks found. 22 tasks shown.
