@@ -16,9 +16,9 @@ RE_DATE     = r"\d\d\d\d-\d\d-\d\d"
 
 RE_DATE     = r"\d\d\d\d-\d\d-\d\d"
 RE_INDENT = rf"(?P<indent>[ \t]*)"
-RE_DONE   = rf"(?P<done>OK *\- *{RE_DATE} *\- *)"
+RE_DONE   = rf"(?P<done>N?OK *\- *{RE_DATE} *\- *)"
 RE_REC    = rf"\(rec (?P<rec_type>every|in) (?P<rec_interval>\d+)(?P<rec_period>[dwmy])\)"
-RE_TASK   = rf"(?P<signal>[\!\*\^])/ *(?P<title>[^\.\:]+?) *({RE_REC})? *([\.\:])"
+RE_TASK   = rf"(?P<signal>[\!\*\^])/ *(?P<title>[^\.\(\)]+?) *({RE_REC})? *([\.\:])"
 RE_PRIORITY = rf" +(?P<priority>\d)"
 RE_EFFORT   = rf" +(?P<effort_value>\d+)(?P<effort_unit>[mhd])"
 RE_START    = rf" +>(?P<start>{RE_DATE})"
@@ -81,7 +81,7 @@ class Parser:
 
         ltf = LineTokenFactory(file_name, subject)
 
-        for i, line_raw in enumerate(open(file_name)):
+        for i, line_raw in enumerate(open(file_name, encoding='latin')):
            self._line_tokens.append(ltf.parse(i + 1, line_raw.rstrip()))
 
         return self

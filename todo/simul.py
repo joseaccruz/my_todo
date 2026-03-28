@@ -83,6 +83,9 @@ def execute_task(tasks, tk, effort, date):
                 tasks[tk]['start'] = get_date_relative(date, int(tasks[tk]['rec_interval']), tasks[tk]['rec_period'])
                 # for now - we should recompute for the cases were the recurrent task is not executed in the day
                 tasks[tk]['due'] = tasks[tk]['start'] 
+            elif tasks[tk]['rec_type'] == "every":
+                tasks[tk]['start'] = get_date_relative(tasks[tk]['start'], int(tasks[tk]['rec_interval']), tasks[tk]['rec_period'])
+                tasks[tk]['due'] = tasks[tk]['start'] 
         else:
             # otherwise mark the task as done
             tasks[tk]['type'] = Task.TASK_TYPE_DONE
@@ -122,7 +125,7 @@ def plan_day(date, tasks):
 def show_calendar(calendar, tasks):
     for day in calendar:
         print()
-        print(day['date'])
+        print(day['date'], day['count'])
         for slot in day['plan']:
             #print(tasks[slot['tk']])
             Report.show_task(tasks[slot['tk']]['task'].as_dict())
@@ -135,11 +138,13 @@ def simulate(task_root, start_date):
 
     for i in range(50):
         # stop when only recurrent tasks left
-        count = len(list(filter(lambda k: (tasks[k]['type'] == Task.TASK_TYPE_READY) and (not tasks[k]['is_recurrent']), tasks)))
+        
+        tasks_tmp = list(filter(lambda k: not tasks[k]['is_recurrent'], sort_tasks(tasks, date)))
+        count = len(tasks_tmp)
 
         if count > 0:
             plan, tasks = plan_day(date, tasks)
-            calendar.append({'date': date, 'plan': plan})
+            calendar.append({'date': date, 'count': count, 'plan': plan})
 
             date = get_date_relative(date, 1, "d")
 

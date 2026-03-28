@@ -99,6 +99,13 @@ class Report:
         return " < ".join(td['path'][::-1])
 
     @staticmethod
+    def report_recurrent(td):
+        if td['is_recurrent']:
+            return f"(rec {td['rec_type']} {td['rec_interval']} {td['rec_period']})"
+        else:
+            return ""
+
+    @staticmethod
     def show_task(td, max_subject_length=32):
         print(">>>>", end=" ")
         print(Report.report_date(td['start']), end=" -> ")
@@ -110,7 +117,8 @@ class Report:
         print(Report.report_subject(td, max_subject_length), end=" > ")
         
         print(Report.report_priority(td), end=" - ")
-        print(Report.report_path(td))
+        print(Report.report_path(td), end=" ")
+        print(Report.report_recurrent(td))
 
     def display_terminal(self, num):
         num = len(self._tasks_dict) if num == 0 else num

@@ -368,7 +368,11 @@ class Task:
             'effort_value':   self._sl_effort_value,
             'effort_unit':    self._sl_effort_unit,
             'effort_minutes': self._sc_effort_minutes,
-            'effort_days':    self._sc_effort_days
+            'effort_days':    self._sc_effort_days,
+            'is_recurrent':   self._sc_is_recurrent,
+            'rec_type':       self._sl_rec_type,
+            'rec_period':     self._sl_rec_period,
+            'rec_interval':   self._sl_rec_interval
         }
 
 
