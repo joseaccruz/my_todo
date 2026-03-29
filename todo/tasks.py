@@ -278,8 +278,12 @@ class Task:
                 if self._sc_prev_sibling._sc_is_recurrent:
                     self.raise_error("Tasks can't be pending recurrent tasks.")
 
-                if self._sc_prev_sibling._sc_type != self.TASK_TYPE_READY:
-                    self.raise_error("Waiting tasks needs must be pending a ready task.")
+                prev_sibling = self._sc_prev_sibling
+                while (prev_sibling is not None) and (prev_sibling._sc_type != self.TASK_TYPE_READY):
+                    prev_sibling = prev_sibling._sc_prev_sibling
+                
+                if prev_sibling is None:
+                    self.raise_error("Waiting tasks must be pending a ready task.")
 
         # build recursively
         if self.is_leaf:
