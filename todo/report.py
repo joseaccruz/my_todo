@@ -80,7 +80,8 @@ class Report:
 
     @staticmethod
     def report_effort(td):
-        txt = f"{td['effort_value']}{td['effort_unit']}" if td['effort_days'] > 0 else ""
+        txt = f"{td['effort_value']:>2s}{td['effort_unit']}" if td['effort_days'] > 0 else ""
+        txt += f" ({td['effort_density']:6.1f})"
 
         return f"{txt:>3s}"
 

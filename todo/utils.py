@@ -45,10 +45,10 @@ def add_business_days(date, n, holidays=[]):
     return date
 
 def get_date_relative(date, value, unit, holidays=[]):
-    assert unit in "dwm", f"Bad unit for relative date {unit}"   # pragma: no cover
+    assert unit in "dwmy", f"Bad unit for relative date '{unit}'"   # pragma: no cover
 
     if unit == 'd':
         return add_business_days(date, value, holidays)
     else:
-        date_unit = {'w': 'weeks', 'm': 'months'}[unit]
+        date_unit = {'w': 'weeks', 'm': 'months', 'y': 'years'}[unit]
         return date + relativedelta(**{date_unit: value})

@@ -1,6 +1,7 @@
 from .report import Report
 from .tasks import Task
 from .utils import multisort, get_date_relative
+from .config import *
 
 TSK_TYPE_TEXT = {
     Task.TASK_TYPE_DONE: "DONE",
@@ -66,6 +67,11 @@ def compute_free_time(plan):
         return MAX_HOURS_DAY - sum([slot['effort'] for slot in plan])
 
 def execute_task(tasks, tk, effort, date):
+    #if (tasks[tk]['due'] < LAST_DUE):
+    #    delta = (tasks[tk]['due'] - date).days
+    #    if delta < 0:
+
+
     if tasks[tk]['effort'] > effort:
         # here we only remove some time to the task
         tasks[tk]['effort'] -= effort

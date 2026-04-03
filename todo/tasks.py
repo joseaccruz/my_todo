@@ -83,11 +83,11 @@ class Task:
             self._sc_effort_minutes = 0
             self._sc_effort_days = 0
         else:
-            # effort in minutes (4h / day)
+            # effort in minutes
             self._sc_effort_minutes = int(self._sl_effort_value) * EFFORT_RATIO[self._sl_effort_unit]
 
-            # effort in days with a rate of 4h / day
-            self._sc_effort_days = int(math.ceil(self._sc_effort_minutes / (60 * 4)))
+            # effort in days
+            self._sc_effort_days = int(math.ceil(self._sc_effort_minutes / (60 * MAX_HOURS_PER_DAY)))
 
         # those propertied depend on the task tree
         self._sc_path = []
@@ -316,6 +316,9 @@ class Task:
     def _compute_state_today(self, today, holidays):
         MARGIN_DAYS = 3
 
+        delta = (self._sc_due - today).days
+        self._sc_effort_density = self._sc_effort_minutes / (delta + 1 if delta >= 0 else (1 / -delta))
+
         # add 3 slack days for hard due date tasks
         slack_margin = MARGIN_DAYS if self._sc_is_hard else 0
         effort_days = self._sc_effort_days
@@ -373,6 +376,7 @@ class Task:
             'effort_unit':    self._sl_effort_unit,
             'effort_minutes': self._sc_effort_minutes,
             'effort_days':    self._sc_effort_days,
+            'effort_density': self._sc_effort_density,
             'is_recurrent':   self._sc_is_recurrent,
             'rec_type':       self._sl_rec_type,
             'rec_period':     self._sl_rec_period,

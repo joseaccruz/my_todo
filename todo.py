@@ -24,7 +24,7 @@ try:
 
         if args.mode == 'mini':
             filters = {'state': [Task.TASK_STATE_ACTIVE, Task.TASK_STATE_CRITICAL, Task.TASK_STATE_OVERDUE, Task.TASK_STATE_NOW]}
-            sort_keys = [('state', False), ('priority', False), ('due', True), ('start', True)]
+            sort_keys = [('state', False), ('priority', False), ('effort_density', False)]
 
         elif args.mode == 'all':
             filters = {'is_done': False}
