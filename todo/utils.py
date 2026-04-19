@@ -55,7 +55,7 @@ def diff_business_days(date1, date2, holidays):
 
     count = 0
     while date1 < date2:
-        if (date.weekday() <= 4) and (date1 not in holidays):
+        if (date1.weekday() <= 4) and (date1 not in holidays):
             count += 1
 
         date1 += td

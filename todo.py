@@ -30,7 +30,6 @@ try:
             filters = {'is_done': False}
             sort_keys = [('subject', True), ('line_num', True)]
 
-
         today = dt.datetime.today().date()
         
         if args.date:
