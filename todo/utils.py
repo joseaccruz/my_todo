@@ -44,6 +44,24 @@ def add_business_days(date, n, holidays=[]):
 
     return date
 
+def diff_business_days(date1, date2, holidays):
+
+    if date1 > date2:
+        date1, date2, signal = date2, date1, -1
+    else:
+        signal = 1
+
+    td = dt.timedelta(days=1)
+
+    count = 0
+    while date1 < date2:
+        if (date.weekday() <= 4) and (date1 not in holidays):
+            count += 1
+
+        date1 += td
+
+    return count * signal
+
 def get_date_relative(date, value, unit, holidays=[]):
     assert unit in "dwmy", f"Bad unit for relative date '{unit}'"   # pragma: no cover
 

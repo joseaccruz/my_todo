@@ -316,8 +316,12 @@ class Task:
     def _compute_state_today(self, today, holidays):
         MARGIN_DAYS = 3
 
-        delta = (self._sc_due - today).days
-        self._sc_effort_density = self._sc_effort_minutes / (delta + 1 if delta >= 0 else (1 / -delta))
+        #delta = (self._sc_due - today).days
+        delta = diff_business_days(today, self._sc_due, holidays)
+        delta = abs((delta + 1) if delta >= 0 else (1 / (delta - 1)))
+
+        self._sc_effort_density = self._sc_effort_minutes / delta
+        self._sc_effort_density = round(self._sc_effort_density / 60.0, 1)
 
         # add 3 slack days for hard due date tasks
         slack_margin = MARGIN_DAYS if self._sc_is_hard else 0

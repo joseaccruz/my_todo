@@ -24,11 +24,11 @@ try:
 
         if args.mode == 'mini':
             filters = {'state': [Task.TASK_STATE_ACTIVE, Task.TASK_STATE_CRITICAL, Task.TASK_STATE_OVERDUE, Task.TASK_STATE_NOW]}
-            sort_keys = [('state', False), ('priority', False), ('effort_density', False)]
+            sort_keys = [('state', False), ('effort_density', False), ('priority', False)]
 
         elif args.mode == 'all':
             filters = {'is_done': False}
-            sort_keys = [('state', False), ('subject', True), ('line_num', True)]
+            sort_keys = [('subject', True), ('line_num', True)]
 
 
         today = dt.datetime.today().date()
